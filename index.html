@@ -9,15 +9,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
 <style>
 :root{--bg:#080d1a;--panel:#101a2b;--panel2:#17243a;--gold:#e7bd66;--gold2:#fff0bf;--text:#f4f0e7;--muted:#a8b0c0;--line:#2c3b54;--cream:#eadbbd;--blue:#536a88}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#263a59 0,#0a1020 48%,#060912 100%);color:var(--text);font-family:Inter,system-ui,sans-serif}.wrap{max-width:1180px;margin:0 auto;padding:18px 20px 40px}a{color:inherit;text-decoration:none}header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 0 16px;border-bottom:1px solid #ffffff18}.brand{font:800 18px Cinzel,serif;letter-spacing:.09em;color:var(--gold2);text-transform:uppercase}.brand span{color:var(--gold)}nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}nav a{font:700 10px Cinzel,serif;letter-spacing:.15em;color:var(--muted);transition:.2s ease}nav a:hover{color:var(--gold2)}.hero{text-align:center;padding:35px 10px 28px}.crown{font-size:48px;filter:drop-shadow(0 0 17px #e7bd6670)}.eyebrow{font:700 12px Cinzel,serif;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}.hero h1{font:800 clamp(32px,6vw,62px) Cinzel,serif;line-height:1.05;margin:10px 0;color:var(--gold2)}.hero p{font-size:15px;line-height:1.7;max-width:760px;margin:0 auto;color:var(--muted)}.btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #e7bd6655;background:#1a2940;color:var(--text);padding:12px 16px;border-radius:10px;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.2s ease}.btn:hover{transform:translateY(-1px);border-color:#e7bd66;box-shadow:0 8px 22px rgba(231,189,102,.12)}.section{margin-top:24px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:0 0 12px}.sectionhead h2{font:700 20px Cinzel,serif;margin:0;color:var(--gold2)}.sectionhead p{margin:0;color:var(--muted);font-size:13px}.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:16px;align-items:start}.card{background:linear-gradient(145deg,#121e31ee,#0c1424f5);border:1px solid #ffffff16;border-radius:18px;box-shadow:0 18px 44px rgba(5,8,16,.38)}.cardhead{display:flex;justify-content:space-between;align-items:center;padding:16px 18px 0}.cardhead h3{font:700 14px Cinzel,serif;letter-spacing:.12em;margin:0;color:var(--gold2);text-transform:uppercase}.tiny{font:700 10px Cinzel,serif;letter-spacing:.12em;color:var(--muted)}.boardarea{padding:13px}.turn{display:flex;justify-content:space-between;gap:8px;padding:0 2px 11px;color:var(--muted);font-size:12px}.turn strong{color:var(--gold2)}.board{display:grid;grid-template-columns:repeat(8,1fr);width:100%;max-width:590px;aspect-ratio:1;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;box-shadow:inset 0 0 18px rgba(0,0,0,.18)}.sq{display:flex;align-items:center;justify-content:center;aspect-ratio:1;border:none;font-size:clamp(24px,3vw,42px);cursor:pointer;user-select:none;transition:.12s ease;padding:0}.sq.light{background:#d7c28c}.sq.dark{background:#866740}.sq:hover{filter:brightness(1.06)}.sq.selected{outline:3px solid rgba(255,215,90,.9);outline-offset:-3px}.sq.target{box-shadow:inset 0 0 0 3px rgba(39,255,170,.75)}.boardnotice{margin-top:10px;font-size:11px;line-height:1.6;color:var(--muted)}.side{display:grid;gap:13px}.kingbox{padding:19px;background:radial-gradient(circle at 85% 15%,#453b57 0,#17243a 42%,#111a2b 100%)}.kingicon{font-size:58px;line-height:1;margin-bottom:10px;filter:drop-shadow(0 0 16px rgba(231,189,102,.5))}.kingbox h3{font:700 18px Cinzel,serif;margin:0 0 8px;color:var(--gold2)}.kingbox p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}.controls{padding:15px}.controls h3{font:700 12px Cinzel,serif;letter-spacing:.12em;margin:0 0 11px;color:var(--gold2)}.controlrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:1px solid rgba(255,255,255,.08)}.controlrow:first-of-type{border-top:none}.controlrow span{color:var(--muted);font-size:12px}.controlrow strong{font-size:12px;color:var(--gold2)}.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini{padding:16px}.mini .ico{font-size:26px}.mini h3{font:700 13px Cinzel,serif;color:var(--gold2);margin:9px 0 6px}.mini p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}.rankgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.rank{background:#111c2e;border:1px solid #ffffff14;border-radius:12px;padding:12px 5px;text-align:center}.rank b{display:block;font-size:22px;margin-bottom:4px}.rank span{font:700 9px Cinzel,serif;letter-spacing:.12em;color:var(--muted)}.society{display:grid;grid-template-columns:1fr 1fr;gap:14px}.societybox{padding:18px}.societybox h3{font:700 15px Cinzel,serif;color:var(--gold2);margin:0 0 8px}.societybox p{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 10px}.societybox a{display:inline-block;color:var(--gold2);font-weight:700}.leader{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px}.leader th,.leader td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}.leader th{font:700 10px Cinzel,serif;color:var(--gold2);letter-spacing:.13em}.leader td{color:var(--muted)}footer{text-align:center;margin-top:28px;padding-top:18px;border-top:1px solid #ffffff16;color:#8993a6;font-size:11px;line-height:1.8}footer strong{color:var(--gold2);font-family:Cinzel,serif;letter-spacing:.12em}@media(max-width:780px){.grid2{grid-template-columns:1fr}.wrap{padding:12px 11px 34px}nav{gap:9px}nav a{font-size:9px}.brand{font-size:14px}.hero{padding:27px 5px 20px}.cards3{grid-template-columns:1fr}.society{grid-template-columns:1fr}.rankgrid{grid-template-columns:repeat(3,1fr)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#263a59 0,#0a1020 48%,#060912 100%);color:var(--text);font-family:Inter,system-ui,sans-serif}.wrap{max-width:1180px;margin:0 auto;padding:18px 20px 40px}a{color:inherit;text-decoration:none}header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 0 16px;border-bottom:1px solid #ffffff18}.brand{font:800 18px Cinzel,serif;letter-spacing:.09em;color:var(--gold2);text-transform:uppercase}.brand span{color:var(--gold)}nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}nav a{font:700 10px Cinzel,serif;letter-spacing:.15em;color:var(--muted);transition:.2s ease}nav a:hover{color:var(--gold2)}.hero{text-align:center;padding:35px 10px 28px}.crown{font-size:48px;filter:drop-shadow(0 0 17px #e7bd6670)}.eyebrow{font:700 12px Cinzel,serif;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}.hero h1{font:800 clamp(32px,6vw,62px) Cinzel,serif;line-height:1.05;margin:10px 0;color:var(--gold2)}.hero p{font-size:15px;line-height:1.7;max-width:760px;margin:0 auto;color:var(--muted)}.btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #e7bd6655;background:#1a2940;color:var(--text);padding:12px 16px;border-radius:10px;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.2s ease}.btn:hover{transform:translateY(-1px);border-color:#e7bd66;box-shadow:0 8px 22px rgba(231,189,102,.12)}.section{margin-top:24px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:0 0 12px}.sectionhead h2{font:700 20px Cinzel,serif;margin:0;color:var(--gold2)}.sectionhead p{margin:0;color:var(--muted);font-size:13px}.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:16px;align-items:start}.card{background:linear-gradient(145deg,#121e31ee,#0c1424f5);border:1px solid #ffffff16;border-radius:18px;box-shadow:0 18px 44px rgba(5,8,16,.38)}.cardhead{display:flex;justify-content:space-between;align-items:center;padding:16px 18px 0}.cardhead h3{font:700 14px Cinzel,serif;letter-spacing:.12em;margin:0;color:var(--gold2);text-transform:uppercase}.tiny{font:700 10px Cinzel,serif;letter-spacing:.12em;color:var(--muted)}.boardarea{padding:13px}.turn{display:flex;justify-content:space-between;gap:8px;padding:0 2px 11px;color:var(--muted);font-size:12px}.turn strong{color:var(--gold2)}.board{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));aspect-ratio:1;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;box-shadow:inset 0 0 18px rgba(0,0,0,.18)}.sq{display:flex;align-items:center;justify-content:center;aspect-ratio:1;border:none;font-size:clamp(25px,3vw,42px);cursor:pointer;user-select:none;transition:.12s ease}.sq.light{background:#d7c28c}.sq.dark{background:#866740}.sq:hover{filter:brightness(1.06)}.sq.selected{outline:3px solid rgba(255,215,90,.9);outline-offset:-3px}.sq.target{box-shadow:inset 0 0 0 3px rgba(39,255,170,.75)}.boardnotice{margin-top:10px;font-size:11px;line-height:1.6;color:var(--muted)}.side{display:grid;gap:13px}.kingbox{padding:19px;background:radial-gradient(circle at 85% 15%,#453b57 0,#17243a 42%,#111a2b 100%)}.kingicon{font-size:58px;line-height:1;margin-bottom:10px;filter:drop-shadow(0 0 16px rgba(231,189,102,.5))}.kingbox h3{font:700 18px Cinzel,serif;margin:0 0 8px;color:var(--gold2)}.kingbox p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}.controls{padding:15px}.controls h3{font:700 12px Cinzel,serif;letter-spacing:.12em;margin:0 0 11px;color:var(--gold2)}.controlrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:1px solid rgba(255,255,255,.08)}.controlrow:first-of-type{border-top:none}.controlrow span{color:var(--muted);font-size:12px}.controlrow strong{font-size:12px;color:var(--gold2)}.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini{padding:16px}.mini .ico{font-size:26px}.mini h3{font:700 13px Cinzel,serif;color:var(--gold2);margin:9px 0 6px}.mini p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}.rankgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.rank{background:#111c2e;border:1px solid #ffffff14;border-radius:12px;padding:12px 5px;text-align:center}.rank b{display:block;font-size:22px;margin-bottom:4px}.rank span{font:700 9px Cinzel,serif;letter-spacing:.12em;color:var(--muted)}.society{display:grid;grid-template-columns:1fr 1fr;gap:14px}.societybox{padding:18px}.societybox h3{font:700 15px Cinzel,serif;color:var(--gold2);margin:0 0 8px}.societybox p{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 10px}.societybox a{display:inline-block;color:var(--gold2);font-weight:700}.leader{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px}.leader th,.leader td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}.leader th{font:700 10px Cinzel,serif;color:var(--gold2);letter-spacing:.13em}.leader td{color:var(--muted)}footer{text-align:center;margin-top:28px;padding-top:18px;border-top:1px solid #ffffff16;color:#8993a6;font-size:11px;line-height:1.8}footer strong{color:var(--gold2);font-family:Cinzel,serif;letter-spacing:.12em}@media(max-width:780px){.grid2{grid-template-columns:1fr}.wrap{padding:12px 11px 34px}nav{gap:9px}nav a{font-size:9px}.brand{font-size:14px}.hero{padding:27px 5px 20px}.cards3{grid-template-columns:1fr}.society{grid-template-columns:1fr}.rankgrid{grid-template-columns:repeat(3,1fr)}}
 </style></head>
 <body><div class="wrap">
 <header><div class="brand">♛ HUCMSS CHESS HUB</div><nav><a href="#arena">ARENA</a><a href="#ranks">RANKS</a><a href="#society">SOCIETY</a></nav></header>
 <section class="hero"><div class="crown">👑</div><div class="eyebrow">WELCOME TO THE KINGDOM</div><h1>THE CHESS REALM</h1><p>A society for thinkers, challengers, and future champions. Enter the hall, study the board, and test your mind against the crown.</p><div class="btns"><a class="btn" href="#arena">ENTER THE ARENA</a><a class="btn" href="#society">JOIN THE SOCIETY</a></div></section>
 
 <section class="section" id="arena"><div class="sectionhead"><h2>⚔ The King's Arena</h2><p>One board. Your move.</p></div><div class="grid2">
-<div class="card"><div class="cardhead"><h3>♟ THE ROYAL CHESSBOARD</h3><span class="tiny">YOU PLAY WHITE</span></div><div class="boardarea"><div class="turn"><span>Side to move: <strong id="turnLabel">White</strong></span><span id="moveCount">Move 1</span></div><div id="board" class="board" aria-label="Chess board"></div><div id="boardNotice" class="boardnotice">Loading the royal board...</div></div></div>
-<div class="side"><div class="card kingbox"><div class="kingicon">♚</div><h3>The King Awaits You</h3><p>“A new challenger enters my hall. Strategy is your weapon, patience your shield. Show me your courage and outplay the crown.”</p></div><div class="card controls"><h3>MATCH STATUS</h3><div class="controlrow"><span>Game state</span><strong id="status">Ready to begin</strong></div><div class="controlrow"><span>Recorded moves</span><strong id="moves">No moves yet.</strong></div></div></div>
+<div class="card"><div class="cardhead"><h3>♟ THE ROYAL CHESSBOARD</h3><span class="tiny">YOU PLAY WHITE</span></div><div class="boardarea"><div class="turn"><span>Side to move: <strong id="turnLabel">White</strong></span><span id="moveCount">Move 1</span></div><div id="board" class="board" aria-label="Chess board"></div><div id="boardNotice" class="boardnotice">The board is visible. Connect to the internet and refresh to enable legal moves.</div></div></div>
+<div class="side"><div class="card kingbox"><div class="kingicon">♚</div><h3>The King Awaits You</h3><p>“A new challenger enters my hall. Strategy is your weapon, patience your shield. Show me your courage and outplay the crown.”</p></div><div class="card controls"><h3>THE ROYAL COMMANDS</h3><div class="controlrow"><span>Game state</span><strong id="status">Ready to begin</strong></div><div class="controlrow"><span>Recorded moves</span><strong id="moves">No moves yet.</strong></div><div class="controlrow"><button id="newGame" class="btn" type="button">NEW GAME</button><button id="undo" class="btn" type="button">UNDO</button><button id="flip" class="btn" type="button">FLIP</button></div><div class="controlrow"><span>Speech</span><strong id="speech">A fresh board. A new legend may begin.</strong></div></div></div>
 </div></section>
 
 <section class="section"><div class="sectionhead"><h2>🏆 The Society's Code</h2><p>More than a game.</p></div><div class="cards3">
@@ -38,140 +38,134 @@
 </div>
 <script>
 (function(){
-  const boardEl = document.getElementById('board');
-  const statusEl = document.getElementById('status');
-  const movesEl = document.getElementById('moves');
-  const turnLabel = document.getElementById('turnLabel');
-  const moveCount = document.getElementById('moveCount');
-  const boardNotice = document.getElementById('boardNotice');
+const boardEl=document.getElementById('board'),statusEl=document.getElementById('status'),movesEl=document.getElementById('moves'),turnLabel=document.getElementById('turnLabel'),moveCount=document.getElementById('moveCount'),speech=document.getElementById('speech'),boardNotice=document.getElementById('boardNotice');
+const files='abcdefgh',glyph={w:{k:'♔',q:'♕',r:'♖',b:'♗',n:'♘',p:'♙'},b:{k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟︎'}};
+let game=null,selected=null,targets=[],flipped=false,busy=false,undoStack=[];
+const level = 3;
 
-  if(!boardEl || !statusEl || !movesEl || !turnLabel || !moveCount){
-    console.error('Chess UI missing required elements.');
-    return;
+function initBoard(){
+  return ['rnbqkbnr','pppppppp','8','8','8','8','PPPPPPPP','RNBQKBNR'];
+}
+
+function renderFallback(){
+  boardEl.innerHTML='';
+  const rows=flipped?[0,1,2,3,4,5,6,7]:[7,6,5,4,3,2,1,0];
+  const cols=flipped?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
+  const b=initBoard();
+  rows.forEach(r=>cols.forEach(c=>{
+    const ch=b[r]&&b[r][c]?b[r][c]:'.';
+    const white=ch!=='.'&&ch===ch.toUpperCase();
+    const type=ch.toLowerCase();
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='sq '+((r+c)%2===0?'light':'dark');
+    if(ch!=='.') btn.textContent = white ? glyph.w[type] : glyph.b[type];
+    boardEl.appendChild(btn);
+  }));
+  statusEl.innerHTML='<strong>Chess rules library unavailable.</strong> The board is displayed, but moves require the library to load.';
+  if(boardNotice) boardNotice.textContent='The board is visible. Connect to the internet and refresh to enable legal moves against the computer.';
+}
+
+if(typeof Chess==='undefined'){renderFallback();return;}
+
+game=new Chess();
+
+function status(t){statusEl.innerHTML=t;}
+
+function render(){
+  boardEl.innerHTML='';
+  const rows=flipped?[8,7,6,5,4,3,2,1]:[1,2,3,4,5,6,7,8];
+  const cols=flipped?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
+  rows.forEach(rank=>cols.forEach(fi=>{
+    const file=files[fi],sq=file+rank,piece=game.get(sq),light=(fi+rank)%2===1;
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='sq '+(light?'light':'dark');
+    btn.dataset.square=sq;
+    if(piece){btn.textContent=glyph[piece.color][piece.type];}
+    if(selected===sq) btn.classList.add('selected');
+    if(targets.includes(sq)) btn.classList.add('target');
+    btn.addEventListener('click',()=>tap(sq));
+    boardEl.appendChild(btn);
+  }));
+  turnLabel.textContent=game.turn()==='w'?'White':'Black';
+  moveCount.textContent='Move '+(Math.floor(game.history().length/2)+1);
+  const h=game.history();
+  movesEl.textContent=h.length?h.join(' '):'No moves yet.';
+  if(boardNotice) boardNotice.textContent='Board ready. White to move.';
+  if(game.game_over()){
+    const msg=game.in_checkmate()?'Checkmate — '+(game.turn()==='w'?'Black':'White')+' wins.':game.in_draw()?'The battle ends in a draw.':'The match has ended.';
+    status('<strong>Game over.</strong> '+msg);
+  } else {
+    status('<strong>White to move.</strong> Select a piece.');
   }
+}
 
-  const files = 'abcdefgh';
-  const glyph = {
-    w: {k:'♔', q:'♕', r:'♖', b:'♗', n:'♘', p:'♙'},
-    b: {k:'♚', q:'♛', r:'♜', b:'♝', n:'♞', p:'♟︎'}
+function evaluateMove(move){
+  const vals={p:100,n:300,b:320,r:500,q:900,k:200};
+  let score=0;
+  if(move.captured) score += vals[move.captured] || 0;
+  if(move.san.includes('+')) score += 35;
+  if(move.san.includes('#')) score += 99999;
+  if(move.promotion) score += 75;
+  return score;
+}
+
+function botMove(){
+  if(game.game_over()){busy=false;render();return;}
+  const all=game.moves({verbose:true});
+  if(!all.length){busy=false;render();return;}
+
+  const scored=all.map(m=>({m,score:evaluateMove(m)}));
+  scored.sort((a,b)=>b.score-a.score);
+  const top = scored.filter(x=>x.score===scored[0].score);
+  const pick=top[Math.floor(Math.random()*top.length)].m;
+
+  const chosen = {
+    from: pick.from,
+    to: pick.to,
+    promotion:'q'
   };
 
-  let game = null;
-  let selected = null;
-  let targets = [];
-  let flipped = false;
-  let busy = false;
+  game.move(chosen);
+  busy=false;
+  speech.textContent='The King replies with '+pick.san+'. Your turn, challenger.';
+  render();
+}
 
-  function renderFallback(){
-    boardEl.innerHTML = '';
-    const rows = flipped ? [0,1,2,3,4,5,6,7] : [7,6,5,4,3,2,1,0];
-    const cols = flipped ? [7,6,5,4,3,2,1,0] : [0,1,2,3,4,5,6,7];
-    const board = ['rnbqkbnr','pppppppp','8','8','8','8','PPPPPPPP','RNBQKBNR'];
+function tap(sq){
+  if(busy||game.game_over()||game.turn()!=='w') return;
+  const p=game.get(sq);
 
-    rows.forEach((r) => {
-      cols.forEach((c) => {
-        const ch = board[r] && board[r][c] ? board[r][c] : '.';
-        const white = ch !== '.' && ch === ch.toUpperCase();
-        const type = ch.toLowerCase();
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'sq ' + (((r + c) % 2 === 0) ? 'light' : 'dark');
-        if(ch !== '.') btn.textContent = white ? glyph.w[type] : glyph.b[type];
-        boardEl.appendChild(btn);
-      });
-    });
-
-    statusEl.innerHTML = '<strong>Chess rules library unavailable.</strong> The board is visible, but moves need an internet connection to load the rules.';
-    if(boardNotice) boardNotice.textContent = 'The board is visible. Connect to the internet and refresh to enable legal moves.';
-  }
-
-  if(typeof Chess === 'undefined'){
-    renderFallback();
-    return;
-  }
-
-  game = new Chess();
-
-  function renderBoard(){
-    boardEl.innerHTML = '';
-    const ranks = flipped ? [8,7,6,5,4,3,2,1] : [1,2,3,4,5,6,7,8];
-    const filesInOrder = flipped ? ['h','g','f','e','d','c','b','a'] : ['a','b','c','d','e','f','g','h'];
-
-    ranks.forEach((rank) => {
-      filesInOrder.forEach((file, fileIndex) => {
-        const square = file + rank;
-        const piece = game.get(square);
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'sq ' + (((rank + fileIndex) % 2 === 0) ? 'light' : 'dark');
-        btn.dataset.square = square;
-
-        if(piece){
-          btn.textContent = glyph[piece.color][piece.type];
-        }
-
-        if(selected === square) btn.classList.add('selected');
-        if(targets.includes(square)) btn.classList.add('target');
-
-        btn.addEventListener('click', () => {
-          if(busy || game.game_over()) return;
-          const clicked = game.get(square);
-
-          if(selected && targets.includes(square)){
-            const move = game.move({from:selected, to:square, promotion:'q'});
-            selected = null;
-            targets = [];
-
-            if(move){
-              renderBoard();
-              if(!game.game_over()){
-                busy = true;
-                statusEl.innerHTML = '<strong>Computer is thinking...</strong>';
-                setTimeout(() => {
-                  const legalMoves = game.moves({verbose:true});
-                  if(!legalMoves.length){
-                    busy = false;
-                    renderBoard();
-                    return;
-                  }
-                  const choice = legalMoves[Math.floor(Math.random() * legalMoves.length)];
-                  game.move({from:choice.from, to:choice.to, promotion:'q'});
-                  busy = false;
-                  renderBoard();
-                }, 250);
-              }
-            }
-            return;
-          }
-
-          if(clicked && clicked.color === 'w'){
-            selected = square;
-            targets = game.moves({square, verbose:true}).map(m => m.to);
-            statusEl.innerHTML = '<strong>Piece selected.</strong> Choose a highlighted square.';
-          } else {
-            selected = null;
-            targets = [];
-            statusEl.innerHTML = '<strong>Choose one of your white pieces.</strong>';
-          }
-
-          renderBoard();
-        });
-
-        boardEl.appendChild(btn);
-      });
-    });
-
-    turnLabel.textContent = game.turn() === 'w' ? 'White' : 'Black';
-    moveCount.textContent = 'Move ' + (Math.floor(game.history().length / 2) + 1);
-    movesEl.textContent = game.history().length ? game.history().join(' ') : 'No moves yet.';
-    if(boardNotice) boardNotice.textContent = 'Board ready. White to move.';
-
-    if(game.game_over()){
-      const message = game.in_checkmate() ? (game.turn() === 'w' ? 'Black wins by checkmate.' : 'White wins by checkmate.') : game.in_draw() ? 'The game is a draw.' : 'The match has ended.';
-      statusEl.innerHTML = '<strong>Game over.</strong> ' + message;
+  if(selected&&targets.includes(sq)){
+    const m=game.move({from:selected,to:sq,promotion:'q'});
+    selected=null;targets=[];
+    if(m){
+      undoStack.push(1);
+      render();
+      if(!game.game_over()){
+        busy=true;
+        status('<strong>Computer is thinking...</strong>');
+        setTimeout(()=>botMove(), 250);
+      }
+      return;
     }
   }
 
-  renderBoard();
+  if(p&&p.color==='w'){
+    selected=sq;
+    targets=game.moves({square:sq,verbose:true}).map(x=>x.to);
+    status('<strong>Piece selected.</strong> Choose a highlighted square.');
+  } else {
+    selected=null;targets=[];
+    status('<strong>Choose one of your white pieces.</strong>');
+  }
+  render();
+}
+
+document.getElementById('newGame').onclick=()=>{game.reset();selected=null;targets=[];busy=false;undoStack=[];speech.textContent='A fresh board. A new legend may begin.';status('<strong>New match.</strong> White to move.');render();};
+document.getElementById('undo').onclick=()=>{if(busy)return;if(game.history().length){game.undo();if(game.turn()==='b')game.undo();selected=null;targets=[];speech.textContent='The chronicle rewinds. A second chance opens.';status('<strong>Move undone.</strong> White to move.');render();}};
+document.getElementById('flip').onclick=()=>{flipped=!flipped;render();};
+render();
 })();
 </script></body></html>

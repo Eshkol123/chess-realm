@@ -38,119 +38,164 @@
 </div>
 <script>
 (function(){
-const boardEl=document.getElementById('board');
-const statusEl=document.getElementById('status');
-const movesEl=document.getElementById('moves');
-const turnLabel=document.getElementById('turnLabel');
-const moveCount=document.getElementById('moveCount');
-const boardNotice=document.getElementById('boardNotice');
+  const boardEl = document.getElementById('board');
+  const statusEl = document.getElementById('status');
+  const movesEl = document.getElementById('moves');
+  const turnLabel = document.getElementById('turnLabel');
+  const moveCount = document.getElementById('moveCount');
+  const boardNotice = document.getElementById('boardNotice');
 
-if(!boardEl || !statusEl || !movesEl || !turnLabel || !moveCount){
-  console.error('Chess UI missing required elements.');
-  return;
-}
-
-const files='abcdefgh';
-const glyph={w:{k:'♔',q:'♕',r:'♖',b:'♗',n:'♘',p:'♙'},b:{k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟︎'}};
-let game=null,selected=null,targets=[],flipped=false,busy=false;
-
-function initialBoard(){
-  return ['rnbqkbnr','pppppppp','8','8','8','8','PPPPPPPP','RNBQKBNR'];
-}
-
-function renderFallback(){
-  if(!boardEl) return;
-  boardEl.innerHTML='';
-  const rows=flipped?[0,1,2,3,4,5,6,7]:[7,6,5,4,3,2,1,0];
-  const cols=flipped?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
-  const b=initialBoard();
-  rows.forEach(r=>cols.forEach(c=>{
-    const ch=b[r][c] || '.';
-    const white=ch!=='.' && ch===ch.toUpperCase();
-    const type=ch.toLowerCase();
-    const btn=document.createElement('button');
-    btn.className='sq '+((r+c)%2===0?'light':'dark');
-    if(ch!=='.') btn.textContent = white ? glyph.w[type] : glyph.b[type];
-    boardEl.appendChild(btn);
-  }));
-  statusEl.innerHTML='<strong>Chess rules library unavailable.</strong> The board is displayed, but moves need an internet connection to load the rules.';
-  if(boardNotice) boardNotice.textContent='The board is visible. Connect to the internet and refresh to enable legal moves.';
-}
-
-if(typeof Chess==='undefined'){
-  renderFallback();
-  return;
-}
-
-game=new Chess();
-
-function render(){
-  boardEl.innerHTML='';
-  const rows=flipped?[8,7,6,5,4,3,2,1]:[1,2,3,4,5,6,7,8];
-  const cols=flipped?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
-
-  rows.forEach(rank=>cols.forEach(fi=>{
-    const file=files[fi];
-    const sq=file+rank;
-    const piece=game.get(sq);
-    const dark=(fi+rank)%2===1;
-    const btn=document.createElement('button');
-    btn.className='sq '+(dark?'dark':'light');
-    if(piece){
-      btn.textContent = glyph[piece.color][piece.type];
-    }
-    if(selected===sq) btn.classList.add('selected');
-    if(targets.includes(sq)) btn.classList.add('target');
-    btn.addEventListener('click', ()=>{
-      if(!busy && !game.game_over() && game.turn()==='w'){ 
-        if(selected && targets.includes(sq)){ 
-          const m=game.move({from:selected,to:sq,promotion:'q'});
-          selected=null; targets=[];
-          if(m){
-            render();
-            if(!game.game_over()){
-              busy=true;
-              statusEl.innerHTML='<strong>Computer is thinking...</strong>';
-              setTimeout(() => {
-                const all=game.moves({verbose:true});
-                if(!all.length){ busy=false; render(); return; }
-                const move=all[Math.floor(Math.random()*all.length)];
-                game.move({from:move.from,to:move.to,promotion:'q'});
-                busy=false;
-                render();
-              }, 250);
-            }
-            return;
-          }
-        }
-        const p=game.get(sq);
-        if(p && p.color==='w'){
-          selected=sq;
-          targets=game.moves({square:sq,verbose:true}).map(x=>x.to);
-          statusEl.innerHTML='<strong>Piece selected.</strong> Choose a highlighted square.';
-        } else {
-          selected=null; targets=[];
-          statusEl.innerHTML='<strong>Choose one of your white pieces.</strong>';
-        }
-        render();
-      }
-    });
-    boardEl.appendChild(btn);
-  }));
-
-  turnLabel.textContent=game.turn()==='w'?'White':'Black';
-  moveCount.textContent='Move '+(Math.floor(game.history().length/2)+1);
-  const h=game.history();
-  movesEl.textContent=h.length ? h.join(' ') : 'No moves yet.';
-  if(boardNotice) boardNotice.textContent = 'Board ready. White to move.';
-  if(game.game_over()){ 
-    const message = game.in_checkmate() ? (game.turn()==='w' ? 'Black wins by checkmate.' : 'White wins by checkmate.') : game.in_draw() ? 'The game is a draw.' : 'The match has ended.';
-    statusEl.innerHTML = '<strong>Game over.</strong> '+message;
-  } else if(!statusEl.textContent || statusEl.textContent.trim()==='Ready to begin'){ 
-    statusEl.innerHTML='<strong>Ready to begin.</strong> White to move.';
+  if(!boardEl || !statusEl || !movesEl || !turnLabel || !moveCount){
+    console.error('Chess UI missing required elements.');
+    return;
   }
-}
 
-render();
+  const files = 'abcdefgh';
+  const glyph = {
+    w: {k:'♔', q:'♕', r:'♖', b:'♗', n:'♘', p:'♙'},
+    b: {k:'♚', q:'♛', r:'♜', b:'♝', n:'♞', p:'♟︎'}
+  };
+
+  let game = null;
+  let selected = null;
+  let targets = [];
+  let flipped = false;
+  let busy = false;
+
+  function initGame(){
+    if(typeof Chess === 'undefined'){
+      boardEl.innerHTML='';
+      const fallback = ['rnbqkbnr','pppppppp','8','8','8','8','PPPPPPPP','RNBQKBNR'];
+      const rows = flipped ? [0,1,2,3,4,5,6,7] : [7,6,5,4,3,2,1,0];
+      const cols = flipped ? [7,6,5,4,3,2,1,0] : [0,1,2,3,4,5,6,7];
+      rows.forEach((r) => {
+        cols.forEach((c) => {
+          const ch = fallback[r] && fallback[r][c] ? fallback[r][c] : '.';
+          const white = ch !== '.' && ch === ch.toUpperCase();
+          const type = ch.toLowerCase();
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'sq ' + (((r + c) % 2 === 0) ? 'light' : 'dark');
+          if(ch !== '.') btn.textContent = white ? glyph.w[type] : glyph.b[type];
+          boardEl.appendChild(btn);
+        });
+      });
+      statusEl.innerHTML = '<strong>Chess rules library unavailable.</strong> The board is visible, but moves need an internet connection to load the rules.';
+      if(boardNotice) boardNotice.textContent = 'The board is visible. Connect to the internet and refresh to enable legal moves.';
+      return false;
+    }
+
+    game = new Chess();
+    return true;
+  }
+
+  function setStatus(html){
+    statusEl.innerHTML = html;
+  }
+
+  function renderBoard(){
+    if(!game) return;
+
+    boardEl.innerHTML = '';
+    const ranks = flipped ? [8,7,6,5,4,3,2,1] : [1,2,3,4,5,6,7,8];
+    const fileOrder = flipped ? ['h','g','f','e','d','c','b','a'] : ['a','b','c','d','e','f','g','h'];
+
+    ranks.forEach((rank) => {
+      fileOrder.forEach((file, fileIndex) => {
+        const square = file + rank;
+        const piece = game.get(square);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'sq ' + (((rank + fileIndex) % 2 === 0) ? 'light' : 'dark');
+        btn.dataset.square = square;
+
+        if(piece){
+          btn.textContent = glyph[piece.color][piece.type];
+        }
+
+        if(selected === square){
+          btn.classList.add('selected');
+        }
+        if(targets.includes(square)){
+          btn.classList.add('target');
+        }
+
+        btn.addEventListener('click', () => handleSquareClick(square));
+        boardEl.appendChild(btn);
+      });
+    });
+
+    turnLabel.textContent = game.turn() === 'w' ? 'White' : 'Black';
+    moveCount.textContent = 'Move ' + (Math.floor(game.history().length / 2) + 1);
+
+    const history = game.history();
+    movesEl.textContent = history.length ? history.join(' ') : 'No moves yet.';
+
+    if(boardNotice){
+      boardNotice.textContent = 'Board ready. White to move.';
+    }
+
+    if(game.game_over()){
+      const message = game.in_checkmate()
+        ? (game.turn() === 'w' ? 'Black wins by checkmate.' : 'White wins by checkmate.')
+        : game.in_draw()
+          ? 'The game is a draw.'
+          : 'The match has ended.';
+      setStatus('<strong>Game over.</strong> ' + message);
+    }
+  }
+
+  function handleSquareClick(square){
+    if(!game || busy || game.game_over()) return;
+
+    const piece = game.get(square);
+
+    if(selected && targets.includes(square)){
+      const move = game.move({ from: selected, to: square, promotion: 'q' });
+      selected = null;
+      targets = [];
+
+      if(move){
+        renderBoard();
+
+        if(!game.game_over()){
+          busy = true;
+          setStatus('<strong>Computer is thinking...</strong>');
+
+          setTimeout(() => {
+            const legalMoves = game.moves({ verbose: true });
+            if(!legalMoves.length){
+              busy = false;
+              renderBoard();
+              return;
+            }
+            const choice = legalMoves[Math.floor(Math.random() * legalMoves.length)];
+            game.move({ from: choice.from, to: choice.to, promotion: 'q' });
+            busy = false;
+            renderBoard();
+          }, 250);
+        }
+      }
+      return;
+    }
+
+    if(piece && piece.color === 'w'){
+      selected = square;
+      targets = game.moves({ square, verbose: true }).map(m => m.to);
+      setStatus('<strong>Piece selected.</strong> Choose a highlighted square.');
+    } else {
+      selected = null;
+      targets = [];
+      setStatus('<strong>Choose one of your white pieces.</strong>');
+    }
+
+    renderBoard();
+  }
+
+  if(!initGame()){
+    return;
+  }
+
+  renderBoard();
 })();
 </script></body></html>

@@ -9,28 +9,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
 <style>
 :root{--bg:#080d1a;--panel:#101a2b;--panel2:#17243a;--gold:#e7bd66;--gold2:#fff0bf;--text:#f4f0e7;--muted:#a8b0c0;--line:#2c3b54;--cream:#eadbbd;--blue:#536a88}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#263a59 0,#0a1020 48%,#060912 100%);color:var(--text);font-family:Inter,system-ui,sans-serif;min-height:100vh}.wrap{max-width:1160px;margin:auto;padding:18px 18px 48px}
-header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 0 16px;border-bottom:1px solid #ffffff18}.brand{font:800 18px Cinzel,serif;letter-spacing:.09em;color:var(--gold2)}nav{display:flex;gap:16px;flex-wrap:wrap}nav a{font-size:11px;color:#c8cfdb;text-decoration:none;letter-spacing:.08em}nav a:hover{color:var(--gold)}
-.hero{text-align:center;padding:35px 10px 28px}.crown{font-size:48px;filter:drop-shadow(0 0 17px #e7bd6670)}h1{font:800 clamp(32px,6vw,62px) Cinzel,serif;line-height:1.05;margin:10px 0;color:var(--gold2)}.eyebrow{color:var(--gold);font-size:10px;letter-spacing:.28em;font-weight:800}.hero p{max-width:690px;margin:12px auto;color:var(--muted);font-size:14px;line-height:1.8}.tagline{font:700 12px Cinzel,serif;letter-spacing:.18em;color:#fff0bf!important}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #e7bd6655;background:#1a2940;color:var(--text);padding:12px 16px;border-radius:10px;font-weight:800;font-size:12px;text-decoration:none;cursor:pointer}.btn.gold{background:linear-gradient(135deg,#f2d58d,#c28b37);color:#17130a;border:0}.btn:hover{filter:brightness(1.12)}.admin-credit{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px auto 0;color:#aeb8c8;font-size:9px;letter-spacing:.19em;font-weight:700}.admin-credit strong{color:var(--gold2);font:700 11px Cinzel,serif;letter-spacing:.12em}.admin-rule{display:inline-block;width:25px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}.heroactions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
-.section{margin-top:24px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:0 0 12px}.sectionhead h2{font:700 20px Cinzel,serif;margin:0;color:var(--gold2)}.sectionhead p{font-size:11px;color:var(--muted);margin:0}
-.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:16px;align-items:start}.card{background:linear-gradient(145deg,#121e31ee,#0c1424f5);border:1px solid #ffffff16;border-radius:17px;box-shadow:0 16px 44px #0005;overflow:hidden}.cardhead{padding:15px 17px;border-bottom:1px solid #ffffff12;display:flex;justify-content:space-between;align-items:center;gap:10px}.cardhead h3{font:700 13px Cinzel,serif;letter-spacing:.09em;margin:0}.tiny{font-size:10px;color:var(--muted)}
-.boardarea{padding:13px}.turn{display:flex;justify-content:space-between;gap:8px;padding:0 2px 11px;color:var(--muted);font-size:12px}.turn strong{color:var(--gold2)}.board{width:100%;max-width:590px;margin:auto;display:grid;grid-template-columns:repeat(8,1fr);aspect-ratio:1;border:3px solid #b98d45;border-radius:5px;overflow:hidden;box-shadow:0 10px 35px #0008}.sq{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1;border:0;padding:0;cursor:pointer;font-family:"DejaVu Sans","Segoe UI Symbol",serif;font-size:clamp(23px,5.4vw,52px);line-height:1}.sq.light{background:#eadbbd}.sq.dark{background:#647a98}.sq.selected{box-shadow:inset 0 0 0 4px #f5c451}.sq.target:after{content:"";position:absolute;width:23%;height:23%;border-radius:50%;background:#14243b88}.sq.capture:after{content:"";position:absolute;inset:3px;border:4px solid #f3c15c;border-radius:50%}.piece{position:relative;z-index:1;filter:drop-shadow(0 2px 1px #0007);font-family:"DejaVu Sans","Segoe UI Symbol",serif}.sq .coord{position:absolute;left:3px;bottom:1px;font:700 9px Inter,sans-serif;opacity:.75}.sq.light .coord{color:#29384d}.sq.dark .coord{color:#fff4db}.boardcontrols{display:flex;gap:8px;flex-wrap:wrap;padding-top:12px}.boardcontrols .btn{padding:10px 12px}.notice{font-size:11px;color:#9da8bb;line-height:1.55;margin-top:10px}
-.side{display:grid;gap:13px}.kingbox{padding:19px;background:radial-gradient(circle at 85% 15%,#453b57 0,#17243a 42%,#111a2b 100%)}.kingicon{font-size:58px;line-height:1;margin-bottom:10px;filter:drop-shadow(0 0 12px #e7bd6660)}.kingbox h3{font:700 18px Cinzel,serif;margin:0 0 8px;color:var(--gold2)}.kingbox p{font-size:13px;line-height:1.65;color:#d4d9e3;margin:0}.speech{border-left:2px solid var(--gold);padding-left:12px;margin-top:13px!important;color:#fff0bf!important;font-style:italic}
-.controls{padding:15px}.controls h3{font:700 12px Cinzel,serif;letter-spacing:.12em;margin:0 0 11px;color:var(--gold2)}.controlrow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:10px 0;font-size:12px;color:var(--muted)}select{background:#0b1322;color:var(--text);border:1px solid var(--line);padding:8px;border-radius:8px;max-width:150px}.status{border:1px solid #ffffff16;border-radius:10px;padding:11px;background:#090f1c;font-size:12px;line-height:1.5;color:var(--muted);min-height:45px}.status strong{color:var(--gold2)}.moves{max-height:100px;overflow:auto;font-size:11px;line-height:1.8;color:var(--muted);padding:7px 0}
-.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini{padding:16px}.mini .ico{font-size:26px}.mini h3{font:700 13px Cinzel,serif;color:var(--gold2);margin:9px 0 6px}.mini p{font-size:11px;line-height:1.6;color:var(--muted);margin:0}
-.rankgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.rank{background:#111c2e;border:1px solid #ffffff14;border-radius:12px;padding:12px 5px;text-align:center}.rank b{display:block;font-size:23px}.rank span{display:block;font:700 9px Cinzel,serif;color:var(--gold2);margin-top:6px;letter-spacing:.06em}
-.society{display:grid;grid-template-columns:1fr 1fr;gap:14px}.societybox{padding:18px}.societybox h3{font:700 15px Cinzel,serif;color:var(--gold2);margin:0 0 8px}.societybox p{font-size:12px;line-height:1.65;color:var(--muted);margin:0 0 14px}.leader{width:100%;border-collapse:collapse;font-size:12px}.leader th,.leader td{text-align:left;padding:10px 7px;border-bottom:1px solid #ffffff12}.leader th{color:var(--gold);font:700 10px Cinzel,serif}.leader td{color:#dce2ec}.demo{font-size:10px;color:#d7b977;margin-top:9px}
-footer{text-align:center;margin-top:28px;padding-top:18px;border-top:1px solid #ffffff16;color:#8993a6;font-size:11px;line-height:1.8}footer strong{color:var(--gold2);font-family:Cinzel,serif;letter-spacing:.05em}
-@media(max-width:780px){.grid2{grid-template-columns:1fr}.wrap{padding:12px 11px 34px}nav{gap:9px}nav a{font-size:9px}.brand{font-size:14px}.hero{padding:27px 5px 20px}.cards3{grid-template-columns:1fr}.rankgrid{grid-template-columns:repeat(3,1fr)}.society{grid-template-columns:1fr}.sq{font-size:clamp(25px,8vw,48px)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#263a59 0,#0a1020 48%,#060912 100%);color:var(--text);font-family:Inter,system-ui,sans-serif}.wrap{max-width:1180px;margin:0 auto;padding:18px 20px 40px}a{color:inherit;text-decoration:none}header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 0 16px;border-bottom:1px solid #ffffff18}.brand{font:800 18px Cinzel,serif;letter-spacing:.09em;color:var(--gold2);text-transform:uppercase}.brand span{color:var(--gold)}nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}nav a{font:700 10px Cinzel,serif;letter-spacing:.15em;color:var(--muted);transition:.2s ease}nav a:hover{color:var(--gold2)}.hero{text-align:center;padding:35px 10px 28px}.crown{font-size:48px;filter:drop-shadow(0 0 17px #e7bd6670)}.eyebrow{font:700 12px Cinzel,serif;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}.hero h1{font:800 clamp(32px,6vw,62px) Cinzel,serif;line-height:1.05;margin:10px 0;color:var(--gold2)}.hero p{font-size:15px;line-height:1.7;max-width:760px;margin:0 auto;color:var(--muted)}.btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #e7bd6655;background:#1a2940;color:var(--text);padding:12px 16px;border-radius:10px;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:.2s ease}.btn:hover{transform:translateY(-1px);border-color:#e7bd66;box-shadow:0 8px 22px rgba(231,189,102,.12)}.section{margin-top:24px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:0 0 12px}.sectionhead h2{font:700 20px Cinzel,serif;margin:0;color:var(--gold2)}.sectionhead p{margin:0;color:var(--muted);font-size:13px}.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:16px;align-items:start}.card{background:linear-gradient(145deg,#121e31ee,#0c1424f5);border:1px solid #ffffff16;border-radius:18px;box-shadow:0 18px 44px rgba(5,8,16,.38)}.cardhead{display:flex;justify-content:space-between;align-items:center;padding:16px 18px 0}.cardhead h3{font:700 14px Cinzel,serif;letter-spacing:.12em;margin:0;color:var(--gold2);text-transform:uppercase}.tiny{font:700 10px Cinzel,serif;letter-spacing:.12em;color:var(--muted)}.boardarea{padding:13px}.turn{display:flex;justify-content:space-between;gap:8px;padding:0 2px 11px;color:var(--muted);font-size:12px}.turn strong{color:var(--gold2)}.board{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));aspect-ratio:1;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;box-shadow:inset 0 0 18px rgba(0,0,0,.18)}.sq{display:flex;align-items:center;justify-content:center;aspect-ratio:1;border:none;font-size:clamp(25px,3vw,42px);cursor:pointer;user-select:none;transition:.12s ease}.sq.light{background:#d7c28c}.sq.dark{background:#866740}.sq:hover{filter:brightness(1.06)}.sq.selected{outline:3px solid rgba(255,215,90,.9);outline-offset:-3px}.sq.target{box-shadow:inset 0 0 0 3px rgba(39,255,170,.75)}.boardnotice{margin-top:10px;font-size:11px;line-height:1.6;color:var(--muted)}.side{display:grid;gap:13px}.kingbox{padding:19px;background:radial-gradient(circle at 85% 15%,#453b57 0,#17243a 42%,#111a2b 100%)}.kingicon{font-size:58px;line-height:1;margin-bottom:10px;filter:drop-shadow(0 0 16px rgba(231,189,102,.5))}.kingbox h3{font:700 18px Cinzel,serif;margin:0 0 8px;color:var(--gold2)}.kingbox p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}.controls{padding:15px}.controls h3{font:700 12px Cinzel,serif;letter-spacing:.12em;margin:0 0 11px;color:var(--gold2)}.controlrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:1px solid rgba(255,255,255,.08)}.controlrow:first-of-type{border-top:none}.controlrow span{color:var(--muted);font-size:12px}.controlrow strong{font-size:12px;color:var(--gold2)}.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini{padding:16px}.mini .ico{font-size:26px}.mini h3{font:700 13px Cinzel,serif;color:var(--gold2);margin:9px 0 6px}.mini p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}.rankgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.rank{background:#111c2e;border:1px solid #ffffff14;border-radius:12px;padding:12px 5px;text-align:center}.rank b{display:block;font-size:22px;margin-bottom:4px}.rank span{font:700 9px Cinzel,serif;letter-spacing:.12em;color:var(--muted)}.society{display:grid;grid-template-columns:1fr 1fr;gap:14px}.societybox{padding:18px}.societybox h3{font:700 15px Cinzel,serif;color:var(--gold2);margin:0 0 8px}.societybox p{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 10px}.societybox a{display:inline-block;color:var(--gold2);font-weight:700}.leader{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px}.leader th,.leader td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}.leader th{font:700 10px Cinzel,serif;color:var(--gold2);letter-spacing:.13em}.leader td{color:var(--muted)}footer{text-align:center;margin-top:28px;padding-top:18px;border-top:1px solid #ffffff16;color:#8993a6;font-size:11px;line-height:1.8}footer strong{color:var(--gold2);font-family:Cinzel,serif;letter-spacing:.12em}@media(max-width:780px){.grid2{grid-template-columns:1fr}.wrap{padding:12px 11px 34px}nav{gap:9px}nav a{font-size:9px}.brand{font-size:14px}.hero{padding:27px 5px 20px}.cards3{grid-template-columns:1fr}.society{grid-template-columns:1fr}.rankgrid{grid-template-columns:repeat(3,1fr)}}
 </style></head>
 <body><div class="wrap">
 <header><div class="brand">♛ HUCMSS CHESS HUB</div><nav><a href="#arena">ARENA</a><a href="#ranks">RANKS</a><a href="#society">SOCIETY</a></nav></header>
-<section class="hero"><div class="crown">👑</div><div class="eyebrow">WELCOME TO THE KINGDOM</div><h1>THE CHESS REALM</h1><p>A society for thinkers, challengers, and future champions. Enter the hall, face the King's challenge, sharpen your strategy, and rise through the ranks.</p><p class="tagline">ENTER. PLAY. COMPETE. CONQUER.</p><div class="admin-credit"><span class="admin-rule"></span><span>COMMUNITY ADMINISTRATOR</span><strong>ESHKOL SOLOMON</strong><span class="admin-rule"></span></div><div class="heroactions"><a class="btn gold" href="#arena">♟ PLAY THE KING</a><a class="btn" href="https://t.me/TheChessRealm" target="_blank" rel="noopener">🚪 JOIN THE SOCIETY</a></div></section>
+<section class="hero"><div class="crown">👑</div><div class="eyebrow">WELCOME TO THE KINGDOM</div><h1>THE CHESS REALM</h1><p>A society for thinkers, challengers, and future champions. Enter the hall, study the board, and test your mind against the crown.</p><div class="btns"><a class="btn" href="#arena">ENTER THE ARENA</a><a class="btn" href="#society">JOIN THE SOCIETY</a></div></section>
 
 <section class="section" id="arena"><div class="sectionhead"><h2>⚔ The King's Arena</h2><p>One board. Your move.</p></div><div class="grid2">
-<div class="card"><div class="cardhead"><h3>♟ THE ROYAL CHESSBOARD</h3><span class="tiny">YOU PLAY WHITE</span></div><div class="boardarea"><div class="turn"><span>Side to move: <strong id="turnLabel">White</strong></span><span id="moveCount">Move 1</span></div><div id="board" class="board" aria-label="Playable chessboard"></div><div class="boardcontrols"><button class="btn gold" id="newGame">↻ New Match</button><button class="btn" id="undo">↶ Undo</button><button class="btn" id="flip">⇅ Flip Board</button></div><div class="notice" id="boardNotice">Tap one of your white pieces, then tap a highlighted square. Play against the computer on this device.</div></div></div>
-<div class="side"><div class="card kingbox"><div class="kingicon">♚</div><h3>The King Awaits You</h3><p>“A new challenger enters my hall. Strategy is your weapon, patience your shield. Show me what you can do.”</p><p class="speech" id="kingSpeech">The board is set. Make your opening move, challenger.</p></div><div class="card controls"><h3>MATCH SETTINGS</h3><div class="controlrow"><label for="difficulty">King's strength</label><select id="difficulty"><option value="1">Novice</option><option value="2" selected>Strategist</option><option value="3">Royal Guard</option></select></div><div class="status" id="status"><strong>The match is ready.</strong> You are White. Make your opening move.</div><h3 style="margin-top:15px">BATTLE CHRONICLE</h3><div class="moves" id="moves">No moves yet. The chronicle awaits.</div></div></div>
+<div class="card"><div class="cardhead"><h3>♟ THE ROYAL CHESSBOARD</h3><span class="tiny">YOU PLAY WHITE</span></div><div class="boardarea"><div class="turn"><span>Side to move: <strong id="turnLabel">White</strong></span><span id="moveCount">Move 1</span></div><div id="board" class="board" aria-label="Chess board"></div><div id="boardNotice" class="boardnotice">Loading the royal board...</div></div></div>
+<div class="side"><div class="card kingbox"><div class="kingicon">♚</div><h3>The King Awaits You</h3><p>“A new challenger enters my hall. Strategy is your weapon, patience your shield. Show me your courage and outplay the crown.”</p></div><div class="card controls"><h3>MATCH STATUS</h3><div class="controlrow"><span>Game state</span><strong id="status">Ready to begin</strong></div><div class="controlrow"><span>Recorded moves</span><strong id="moves">No moves yet.</strong></div></div></div>
 </div></section>
 
 <section class="section"><div class="sectionhead"><h2>🏆 The Society's Code</h2><p>More than a game.</p></div><div class="cards3">
@@ -40,47 +27,130 @@ footer{text-align:center;margin-top:28px;padding-top:18px;border-top:1px solid #
 </div></section>
 
 <section class="section" id="ranks"><div class="sectionhead"><h2>♛ Rise Through the Ranks</h2><p>Your journey starts at the bottom.</p></div><div class="rankgrid">
-<div class="rank"><b>♟</b><span>PAWN</span></div><div class="rank"><b>♞</b><span>KNIGHT</span></div><div class="rank"><b>♝</b><span>BISHOP</span></div><div class="rank"><b>♜</b><span>ROOK</span></div><div class="rank"><b>♛</b><span>QUEEN</span></div><div class="rank"><b>♚</b><span>KING</span></div>
+<div class="rank"><b>♟</b><span>PAWN</span></div><div class="rank"><b>♞</b><span>KNIGHT</span></div><div class="rank"><b>♝</b><span>BISHOP</span></div><div class="rank"><b>♜</b><span>ROOK</span></div><div class="rank"><b>♛</b><span>QUEEN</span></div><div class="rank"><b>♔</b><span>KING</span></div>
 </div></section>
 
 <section class="section" id="society"><div class="sectionhead"><h2>🌑 The Society Hall</h2><p>Meet. Learn. Compete.</p></div><div class="society">
-<div class="card societybox"><h3>💬 Enter the Community</h3><p>Join The Chess Realm on Telegram for announcements, challenges, tournament updates, and conversation with other chess lovers.</p><a class="btn gold" href="https://t.me/TheChessRealm" target="_blank" rel="noopener">OPEN TELEGRAM ♟</a><div class="demo">For a true group chat, create a Telegram discussion group and link it to your channel.</div></div>
-<div class="card societybox"><h3>🏆 Hall of Fame</h3><table class="leader"><thead><tr><th>RANK</th><th>PLAYER</th><th>POINTS</th></tr></thead><tbody><tr><td>01</td><td>Champion — coming soon</td><td>—</td></tr><tr><td>02</td><td>Challenger — coming soon</td><td>—</td></tr><tr><td>03</td><td>Strategist — coming soon</td><td>—</td></tr></tbody></table><div class="demo">Preview only — this is not yet a live shared leaderboard.</div></div>
+<div class="card societybox"><h3>💬 Enter the Community</h3><p>Join The Chess Realm on Telegram for announcements, challenges, tournament updates, and conversation with other chess lovers.</p><a href="#">Telegram Community →</a></div>
+<div class="card societybox"><h3>🏆 Hall of Fame</h3><table class="leader"><thead><tr><th>RANK</th><th>PLAYER</th><th>POINTS</th></tr></thead><tbody><tr><td>01</td><td>Champion — coming soon</td><td>—</td></tr><tr><td>02</td><td>Master — soon</td><td>—</td></tr><tr><td>03</td><td>Scholar — soon</td><td>—</td></tr></tbody></table></div>
 </div></section>
 <footer><strong>HUCMSS CHESS HUB</strong><br>Sharper minds. Stronger moves. One move at a time.</footer>
 </div>
 <script>
 (function(){
-const boardEl=document.getElementById('board'),statusEl=document.getElementById('status'),movesEl=document.getElementById('moves'),turnLabel=document.getElementById('turnLabel'),moveCount=document.getElementById('moveCount'),speech=document.getElementById('kingSpeech');
-const files='abcdefgh',glyph={w:{k:'♔',q:'♕',r:'♖',b:'♗',n:'♘',p:'♙'},b:{k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟︎'}};
-let game=null,selected=null,targets=[],flipped=false,busy=false,undoStack=[];
-function initialBoard(){return ['rnbqkbnr','pppppppp','........','........','........','........','PPPPPPPP','RNBQKBNR'];}
+const boardEl=document.getElementById('board');
+const statusEl=document.getElementById('status');
+const movesEl=document.getElementById('moves');
+const turnLabel=document.getElementById('turnLabel');
+const moveCount=document.getElementById('moveCount');
+const boardNotice=document.getElementById('boardNotice');
+
+if(!boardEl || !statusEl || !movesEl || !turnLabel || !moveCount){
+  console.error('Chess UI missing required elements.');
+  return;
+}
+
+const files='abcdefgh';
+const glyph={w:{k:'♔',q:'♕',r:'♖',b:'♗',n:'♘',p:'♙'},b:{k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟︎'}};
+let game=null,selected=null,targets=[],flipped=false,busy=false;
+
+function initialBoard(){
+  return ['rnbqkbnr','pppppppp','8','8','8','8','PPPPPPPP','RNBQKBNR'];
+}
+
 function renderFallback(){
- boardEl.innerHTML='';const rows=flipped?[0,1,2,3,4,5,6,7]:[7,6,5,4,3,2,1,0],cols=flipped?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7],b=initialBoard();
- rows.forEach(r=>cols.forEach(c=>{const ch=b[r][c],white=ch!=='.'&&ch===ch.toUpperCase(),type=ch.toLowerCase(),btn=document.createElement('button');btn.className='sq '+((r+c)%2===0?'light':'dark');btn.innerHTML=ch==='.'?'':`<span class="piece">${glyph[white?'w':'b'][type]}</span>`;btn.disabled=true;boardEl.appendChild(btn);}));
- statusEl.innerHTML='<strong>Chess rules library unavailable.</strong> The board is displayed, but moves need an internet connection to load the chess rules.';
- document.getElementById('boardNotice').textContent='The board is visible. Connect to the internet and refresh to enable legal moves against the computer.';
+  if(!boardEl) return;
+  boardEl.innerHTML='';
+  const rows=flipped?[0,1,2,3,4,5,6,7]:[7,6,5,4,3,2,1,0];
+  const cols=flipped?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
+  const b=initialBoard();
+  rows.forEach(r=>cols.forEach(c=>{
+    const ch=b[r][c] || '.';
+    const white=ch!=='.' && ch===ch.toUpperCase();
+    const type=ch.toLowerCase();
+    const btn=document.createElement('button');
+    btn.className='sq '+((r+c)%2===0?'light':'dark');
+    if(ch!=='.') btn.textContent = white ? glyph.w[type] : glyph.b[type];
+    boardEl.appendChild(btn);
+  }));
+  statusEl.innerHTML='<strong>Chess rules library unavailable.</strong> The board is displayed, but moves need an internet connection to load the rules.';
+  if(boardNotice) boardNotice.textContent='The board is visible. Connect to the internet and refresh to enable legal moves.';
 }
-if(typeof Chess==='undefined'){renderFallback();return;}
+
+if(typeof Chess==='undefined'){
+  renderFallback();
+  return;
+}
+
 game=new Chess();
+
 function render(){
- boardEl.innerHTML='';const rows=flipped?[8,7,6,5,4,3,2,1]:[1,2,3,4,5,6,7,8],cols=flipped?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
- rows.forEach(rank=>cols.forEach(fi=>{const file=files[fi],sq=file+rank,piece=game.get(sq),light=(fi+rank)%2===1,btn=document.createElement('button');btn.className='sq '+(light?'light':'dark');if(selected===sq)btn.classList.add('selected');if(targets.includes(sq))btn.classList.add(piece?'capture':'target');if(piece)btn.innerHTML=`<span class="piece">${glyph[piece.color][piece.type]}</span>`;if(fi===0||rank===1){const coord=document.createElement('span');coord.className='coord';coord.textContent=fi===0?rank:file;btn.appendChild(coord);}btn.addEventListener('click',()=>tap(sq));boardEl.appendChild(btn);}));
- turnLabel.textContent=game.turn()==='w'?'White':'Black';moveCount.textContent='Move '+(Math.floor(game.history().length/2)+1);
- const h=game.history();movesEl.textContent=h.length?h.reduce((a,m,i)=>{if(i%2===0)a.push((Math.floor(i/2)+1)+'. '+m);else a[a.length-1]+='  '+m;return a;},[]).join('   '):'No moves yet. The chronicle awaits.';
- if(game.game_over()){const msg=game.in_checkmate()?'Checkmate — '+(game.turn()==='w'?'Black':'White')+' wins.':game.in_draw()?'The battle ends in a draw.':'The match has ended.';statusEl.innerHTML='<strong>'+msg+'</strong>';speech.textContent='A worthy battle. The kingdom remembers every challenger.';}
+  boardEl.innerHTML='';
+  const rows=flipped?[8,7,6,5,4,3,2,1]:[1,2,3,4,5,6,7,8];
+  const cols=flipped?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
+
+  rows.forEach(rank=>cols.forEach(fi=>{
+    const file=files[fi];
+    const sq=file+rank;
+    const piece=game.get(sq);
+    const dark=(fi+rank)%2===1;
+    const btn=document.createElement('button');
+    btn.className='sq '+(dark?'dark':'light');
+    if(piece){
+      btn.textContent = glyph[piece.color][piece.type];
+    }
+    if(selected===sq) btn.classList.add('selected');
+    if(targets.includes(sq)) btn.classList.add('target');
+    btn.addEventListener('click', ()=>{
+      if(!busy && !game.game_over() && game.turn()==='w'){ 
+        if(selected && targets.includes(sq)){ 
+          const m=game.move({from:selected,to:sq,promotion:'q'});
+          selected=null; targets=[];
+          if(m){
+            render();
+            if(!game.game_over()){
+              busy=true;
+              statusEl.innerHTML='<strong>Computer is thinking...</strong>';
+              setTimeout(() => {
+                const all=game.moves({verbose:true});
+                if(!all.length){ busy=false; render(); return; }
+                const move=all[Math.floor(Math.random()*all.length)];
+                game.move({from:move.from,to:move.to,promotion:'q'});
+                busy=false;
+                render();
+              }, 250);
+            }
+            return;
+          }
+        }
+        const p=game.get(sq);
+        if(p && p.color==='w'){
+          selected=sq;
+          targets=game.moves({square:sq,verbose:true}).map(x=>x.to);
+          statusEl.innerHTML='<strong>Piece selected.</strong> Choose a highlighted square.';
+        } else {
+          selected=null; targets=[];
+          statusEl.innerHTML='<strong>Choose one of your white pieces.</strong>';
+        }
+        render();
+      }
+    });
+    boardEl.appendChild(btn);
+  }));
+
+  turnLabel.textContent=game.turn()==='w'?'White':'Black';
+  moveCount.textContent='Move '+(Math.floor(game.history().length/2)+1);
+  const h=game.history();
+  movesEl.textContent=h.length ? h.join(' ') : 'No moves yet.';
+  if(boardNotice) boardNotice.textContent = 'Board ready. White to move.';
+  if(game.game_over()){ 
+    const message = game.in_checkmate() ? (game.turn()==='w' ? 'Black wins by checkmate.' : 'White wins by checkmate.') : game.in_draw() ? 'The game is a draw.' : 'The match has ended.';
+    statusEl.innerHTML = '<strong>Game over.</strong> '+message;
+  } else if(!statusEl.textContent || statusEl.textContent.trim()==='Ready to begin'){ 
+    statusEl.innerHTML='<strong>Ready to begin.</strong> White to move.';
+  }
 }
-function status(t){statusEl.innerHTML=t;}
-function tap(sq){if(busy||game.game_over()||game.turn()!=='w')return;const p=game.get(sq);
- if(selected&&targets.includes(sq)){const m=game.move({from:selected,to:sq,promotion:'q'});selected=null;targets=[];if(m){undoStack.push(1);render();if(!game.game_over()){busy=true;status('<strong>The King's turn…</strong> The court is considering its reply.');setTimeout(botMove,350);}}return;}
- if(p&&p.color==='w'){selected=sq;targets=game.moves({square:sq,verbose:true}).map(x=>x.to);status('<strong>Piece selected.</strong> Choose a highlighted square.');}
- else{selected=null;targets=[];status('<strong>Choose one of your white pieces.</strong>');}render();}
-function botMove(){if(game.game_over()){busy=false;render();return;}const all=game.moves({verbose:true});if(!all.length){busy=false;render();return;}const vals={p:100,n:300,b:320,r:500,q:900,k:20000};const level=+document.getElementById('difficulty').value;
- all.sort((a,b)=>{const score=m=>(m.captured?(vals[m.captured]||0):0)+(m.san.includes('+')?35:0)+(m.san.includes('#')?99999:0)+Math.random()*(level===1?100:level===2?45:18);return score(b)-score(a);});
- const pick=all[0];game.move(pick);busy=false;speech.textContent='The King replies with '+pick.san+'. Your turn, challenger.';status(game.in_check()?'<strong>Check!</strong> Your King is under attack.':'<strong>Your turn.</strong> The King has played '+pick.san+'.');render();}
-document.getElementById('newGame').onclick=()=>{game.reset();selected=null;targets=[];busy=false;undoStack=[];speech.textContent='A fresh board. A new legend may begin.';status('<strong>New match started.</strong> You are White.');render();};
-document.getElementById('undo').onclick=()=>{if(busy)return;if(game.history().length){game.undo();if(game.turn()==='b')game.undo();selected=null;targets=[];speech.textContent='The chronicle rewinds. Choose carefully.';status('<strong>Last turn undone.</strong> Your move.');render();}};
-document.getElementById('flip').onclick=()=>{flipped=!flipped;render();};
+
 render();
 })();
 </script></body></html>
